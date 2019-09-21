@@ -10,10 +10,10 @@ fun main (args: Array<String>){
         }
 }
 
-fun Tasks(task:String , inText:String)
-{
-    val stdin = "the quick brown fox jumps over the lazy dog"
-    if (!checkInput(inText)){
+fun Tasks(task:String , inText:String) //Функция определяющая выбранное задание
+{   
+    val stdin = "the quick brown fox jumps over the lazy dog" //стандартная строка при отсутствии ввода
+    if (!checkInput(inText)){ //проверяем что введено пользователем
         fourthlvl(stdin)
     }
     else{
@@ -37,65 +37,65 @@ fun Tasks(task:String , inText:String)
 
 }
 
-fun firstlvl(sent:String)
+fun firstlvl(sent:String) //Функция 1го задания
 {
     println("\nLVL1\n")
-    val words = sent.split(" ")
-    for (word in words)
+    val words = sent.split(" ") //Разделяем строку на слова
+    for (word in words) //Выводим все слова строки
     {
         println(word)
     }
 }
 
-fun secondlvl(sent:String)
+fun secondlvl(sent:String) //Функция 2го задания
 {
     println("\nLVL2\n")
-    val words = sent.split(" ").sorted()
-    for (word in words)
-    {
+    val words = sent.split(" ").sorted() //Разбиваем строку и сортируем по порядку
+    for (word in words) //Выводим все слова строки
+        {
         println(word)
     }
 }
 
-fun thirdlvl(sent:String)
+fun thirdlvl(sent:String) //Функция 3го задания
 {
     println("\nLVL3\n")
-    var words = sent.split(" ").sorted()
-    var words1=words.union(words)
-    for (word in words1) {
+    var words = sent.split(" ").sorted()  //Разбиваем строку и сортируем по порядку
+    var words1=words.union(words) //Объединяем 2 одинаковых строки для исколючения повторений
+    for (word in words1) { //Выводим все слова строки
         println(word)
     }
 }
 
-fun fourthlvl(sent:String)
+fun fourthlvl(sent:String) //Функция 4го задания
 {
     println("\nLVL4")
-    var words = sent.split(" ").sorted()
-    var words1=words
-    var count=0
-    var cursent:String=""
-    for (word in words)
+    var words = sent.split(" ").sorted() //Разбиваем строку и сортируем по порядку
+    var words1=words //Создаём дубликат строки для поиска повторений
+    var count=0 //Перемнная с количеством повторений
+    var cursent:String="" //Создаём пустую строку для записи новой строки
+    for (word in words) //Проходим по всем словам 1й строки
     {
-        for (word1 in words1)
+        for (word1 in words1) //Проходим по всем словам 2й строки
         {
-            if (word == word1)
+            if (word == word1) //Ищем совпадения
             {
                 count++;
             }
         }
-        cursent+=("$word-$count ")
+        cursent+=("$word-$count ") //Добавляем новое содержимое
         count=0
     }
-        var sent1 = cursent.split(" ").sorted()
-        var sent2 = sent1.union(sent1)
-        for (word in sent2)
+        var sent1 = cursent.split(" ").sorted() //Разбиваем строку и сортируем по порядку
+        var sent2 = sent1.union(sent1) //Объединяем 2 одинаковых строки для исколючения повторений
+        for (word in sent2) //Выводим все подстроки итоговой строки
         {
             println(word)
         }
 }
 
-fun checkInput(sent:String):Boolean {
-    var status=true
+fun checkInput(sent:String):Boolean { //Функция проверки ввода
+    var status=true //Определяет статус ввода true - что то введено
     if (sent == "") {
         println("Вы не ввели ничего")
         status=false
@@ -105,7 +105,7 @@ fun checkInput(sent:String):Boolean {
     return status
 }
 
-fun readText():String
+fun readText():String //Функция чтения текста с консоли
 {
     println("Введите произвольную строку")
     val text:String = readLine().toString()
