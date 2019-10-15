@@ -16,12 +16,11 @@ fun main(args: Array<String>) {
 fun fourthLevel(sent: String) //Функция 4го задания
 {
     val words = sent.split(" ").sorted().drop(1) /* Разбиваем строку и сортируем по порядку */
-    val words1 = words /* Создаём дубликат строки для поиска повторений */
     var count = 0 /* Перемнная с количеством повторений */
     var currentSent = "" /* Создаём пустую строку для записи новой строки */
 
     for (word in words) { /* Проходим по всем словам 1й строки */
-        for (word1 in words1) { /* Проходим по всем словам 2й строки */
+        for (word1 in words) { /* Проходим по всем словам 2й строки */
             if (word == word1) {
                 count++
             }

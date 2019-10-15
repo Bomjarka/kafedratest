@@ -4,5 +4,5 @@ java -jar out/stringTest.jar the quick brown fox jumps over the lazy dog
 java -jar out/stringTest.jar Software engeneering is very interesting!
 echo "the quick brown fox jumps over the lazy dog" | java -jar out/stringTest.jar
 echo "blah blah bla" | java -jar out/stringTest.jar
-echo "Software engeneering is very interesting!" | java -jar out/stringTest.jar
+echo "Software engineering is very interesting!" | java -jar out/stringTest.jar
 pause
