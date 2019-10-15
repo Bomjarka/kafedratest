@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ea7ac34-9ea2-4921-b5e8-785cb687df89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="8ea7ac34-9ea2-4921-b5e8-785cb687df89" name="Default Changelist" comment="Обновление структуры">
+      <change beforePath="$PROJECT_DIR$/kafedratest.iws" beforeDir="false" afterPath="$PROJECT_DIR$/kafedratest.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scriptTest.bat" beforeDir="false" afterPath="$PROJECT_DIR$/scriptTest.bat" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571134816051</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Обновление структуры">
+      <created>1571134906459</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571134906459</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
