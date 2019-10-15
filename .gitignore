@@ -27,3 +27,5 @@ hs_err_pid*
 !/kafedratest.ipr
 !/kafedratest.iml
 !/src/META-INF/
+/out/production/kafedratest/META-INF/kafedratest.kotlin_module
+/out/production/kafedratest/META-INF/MANIFEST.MF
