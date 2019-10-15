@@ -22,10 +22,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+!/src/META-INF/
 /out/production/kafedratest/META-INF/kafedratest.kotlin_module
 /out/production/kafedratest/META-INF/MANIFEST.MF
-!/StringTest.iml
 !/kafedratest.iws
 !/kafedratest.ipr
 !/kafedratest.iml
-!/src/META-INF/
+!/StringTest.iml
