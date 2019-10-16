@@ -13,19 +13,23 @@ fun main(args: Array<String>) {
     }
 }
 
+/**
+ * Метод, обеспечивающий разбор вводимой строки на подстроки и форматирующий выходные данные в алфавитном порядке
+ */
+
 fun fourthLevel(sent: String) //Функция 4го задания
 {
-    val words = sent.split(" ").sorted().drop(1) /* Разбиваем строку и сортируем по порядку */
-    var count = 0 /* Перемнная с количеством повторений */
-    var currentSent = "" /* Создаём пустую строку для записи новой строки */
+    val words = sent.split(" ").sorted().drop(1) // Разбиваем строку и сортируем по порядку
+    var count = 0 // Перемнная с количеством повторений
+    var currentSent = "" // Создаём пустую строку для записи новой строки
 
-    for (word in words) { /* Проходим по всем словам 1й строки */
-        for (word1 in words) { /* Проходим по всем словам 2й строки */
+    for (word in words) { // Проходим по всем словам 1й строки
+        for (word1 in words) { // Проходим по всем словам 2й строки
             if (word == word1) {
                 count++
             }
         }
-        currentSent += ("$word-$count ") /* Добавляем новое содержимое */
+        currentSent += ("$word-$count ") // Добавляем новое содержимое
         count = 0
     }
     val sent1 = currentSent.split(" ").sorted()
