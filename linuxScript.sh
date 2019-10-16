@@ -1,5 +1,5 @@
 #!/bin/bash
-kotlinc src\app.kt -include-runtime -d stringTest.jar
+kotlinc src/app.kt -include-runtime -d stringTest.jar
 java -jar stringTest.jar Hello great world
 java -jar stringTest.jar the quick brown fox jumps over the lazy dog
 java -jar stringTest.jar Software engeneering is very interesting!
