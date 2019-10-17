@@ -25,7 +25,7 @@ class ValidateService {
         if (isLoginCorrect(login)) {
             val user = findUser(login)
             if (user != null) {
-                if (ispasscorrect1(user, password)) println("0 - SUCCESS") else println("4 - Password incorrect")
+                if (isPassCorrect(user, password)) println("0 - SUCCESS") else println("4 - Password incorrect")
             } else println("3 - User not found")
         } else {
             println("2 - login format incorrect")
@@ -49,7 +49,7 @@ class ValidateService {
         return usersList.findLast { item -> item.login == login }
     }
 
-    private fun ispasscorrect1(user: Users?, password: String): Boolean {
+    private fun isPassCorrect(user: Users?, password: String): Boolean {
         return user != null && password == user.password
     }
 }
