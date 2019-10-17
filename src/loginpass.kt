@@ -1,12 +1,13 @@
 fun main(args: Array<String>) {
-    if (args[0] == "-h") {
+    val userscollection = mapOf("admin" to "admin", "user" to "user1")
+
+    if (args.size == 4) {
+        if (args[1] in userscollection) {
+            if (args[3] == userscollection[args[1]])
+                println("ALRIGHT") else println("Password is wrong")
+        }
+    } else if (args[0] == "-h")
         throwFAQ()
-    } else {
-        val admin = Users("admin", "admin")
-        println("${admin.login} ${admin.password}")
-    }
-
-
 }
 
 data class Users(val login: String, val password: String)
