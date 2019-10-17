@@ -39,13 +39,13 @@ java -jar loginpass.jar -password user -login user1
 echo.
 
 echo Testing login: u$er1 password: user (5.5)
-echo Excepted: Special symbols found
+echo Excepted: login format incorrect
 echo Actual:
 java -jar loginpass.jar -login u$er1 -password user
 echo.
 
 echo Testing login: @dmin password: admin (5.5)
-echo Excepted: Special symbols found
+echo Excepted: login format incorrect
 echo Actual:
 java -jar loginpass.jar -login @dmin -password @dmin
 echo.
