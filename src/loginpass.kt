@@ -22,7 +22,7 @@ val usersList = listOf(
 
 class ValidateService {
     fun validate(login: String, password: String) {
-        if (isloginCorrect(login)) {
+        if (isLoginCorrect(login)) {
             val user = findUser(login)
             if (user != null) {
                 if (ispasscorrect1(user, password)) println("0 - SUCCESS") else println("4 - Password incorrect")
@@ -32,12 +32,12 @@ class ValidateService {
         }
     }
 
-    private fun isloginCorrect(login: String): Boolean {
-        val invalidchars = listOf("$", "@", "!", "#", "%", "^", "&", "*")
+    private fun isLoginCorrect(login: String): Boolean {
+        val invalidChars = listOf("$", "@", "!", "#", "%", "^", "&", "*")
         var i = 0
         var count = 0
         while (i < login.length) {
-            if (login.contains(invalidchars[i])) {
+            if (login.contains(invalidChars[i])) {
                 count++
                 i++
             } else i++
