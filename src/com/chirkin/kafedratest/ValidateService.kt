@@ -5,7 +5,7 @@ class ValidateService {
         if (isLoginCorrect(login)) {
             val user = findUser(login)
             if (user != null) {
-                if (isPassCorrect(user, password)) println("0 - SUCCESS") else println("4 - Password incorrect")
+                if (isPassCorrect(user, password)) println("0 - Login successful") else println("4 - Password incorrect")
             } else println("3 - User not found")
         } else {
             println("2 - login format incorrect")

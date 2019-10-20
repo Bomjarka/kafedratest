@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kotlinc src/loginpass.kt -include-runtime -d loginpass.jar
+kotlinc src/com/chirkin/kafedratest -include-runtime -d loginpass.jar
 echo -e
 
 echo "Testing no parameters (5.1)"
