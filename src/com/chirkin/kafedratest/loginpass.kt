@@ -1,6 +1,6 @@
 package com.chirkin.kafedratest
 
-val usersList = listOf(
+val userList = listOf(
         User("admin", "admin"),
         User("user1", "user")
 )

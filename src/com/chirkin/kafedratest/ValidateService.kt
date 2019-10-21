@@ -1,6 +1,7 @@
 package com.chirkin.kafedratest
 
 
+
 class ValidateService {
     fun validate(login: String, password: String): Int {
         if (isLoginCorrect(login)) {
@@ -37,7 +38,7 @@ class ValidateService {
     }
 
     private fun findUser(login: String): User? {
-        return usersList.findLast { item -> item.login == login }
+        return userList.findLast { item -> item.login == login }
     }
 
     private fun isPassCorrect(user: User?, password: String): Boolean {
