@@ -1,32 +1,25 @@
 package com.chirkin.kafedratest
 
+class Params(args: Array<String>) {
+    val login: String
+    val password: String
+    val isHelp: Boolean
 
-class Params(private val args: Array<String>) {
-
-    var isHelp = false
-    var login: String = ""
-    var password: String = ""
-    var list = listOf("")
-        get() {
-            if (args.isEmpty()) {
-                isHelp = true
-                printReference()
+    init {
+        if ((args.isEmpty()) || ("-h" in args)) {
+            isHelp = true
+            login = ""
+            password = ""
+        } else {
+            if (args.first() == "-login") {
+                login = args[1]
+                password = args[3]
+                isHelp = false
             } else {
-                if ("-h" in this.args) {
-                    printReference()
-                    isHelp = true
-                } else {
-                    if (args.first() == "-login") {
-                        login = args[1]
-                        password = args[3]
-                    } else {
-                        login = args[3]
-                        password = args[1]
-                    }
-                }
+                login = args[3]
+                password = args[1]
+                isHelp = false
             }
-
-            list = listOf(login, password)
-            return field
         }
+    }
 }
