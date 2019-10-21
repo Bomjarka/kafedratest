@@ -1,5 +1,6 @@
 package com.chirkin.kafedratest
 
+
 class Params(private val args: Array<String>) {
 
     var isHelp = false
