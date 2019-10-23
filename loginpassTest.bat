@@ -14,28 +14,28 @@ echo Actual:
 java -jar loginpass.jar -h
 echo.
 
-echo Testing login: admin password: admin (5.3)
+echo Testing login: Admin password: admin (5.3)
 echo Excepted: Login successeful
 echo Actual:
-java -jar loginpass.jar -login admin -password admin
+java -jar loginpass.jar -login Admin -password admin
 echo.
 
-echo Testing login: user1 password: user (5.3)
+echo Testing login: User1 password: user (5.3)
 echo Excepted: Login successeful
 echo Actual:
-java -jar loginpass.jar -login user1 -password user
+java -jar loginpass.jar -login User1 -password user
 echo.
 
-echo Testing password: admin login: admin (5.4)
+echo Testing password: admin login: Admin (5.4)
 echo Excepted: Login successeful
 echo Actual:
-java -jar loginpass.jar -password admin -login admin
+java -jar loginpass.jar -password admin -login Admin
 echo.
 
-echo Testing password: user login: user1 (5.4)
+echo Testing password: user login: User1 (5.4)
 echo Excepted: Login successeful
 echo Actual:
-java -jar loginpass.jar -password user -login user1
+java -jar loginpass.jar -password user -login User1
 echo.
 
 echo Testing login: u$er1 password: user (5.5)
@@ -50,17 +50,17 @@ echo Actual:
 java -jar loginpass.jar -login @dmin -password @dmin
 echo.
 
-echo Testing login: user242 password: user (5.6)
+echo Testing login: User242 password: user (5.6)
 echo Excepted: User not found
 echo Actual:
-java -jar loginpass.jar -login user242 -password user
+java -jar loginpass.jar -login User242 -password user
 echo.
 
 
-echo Testing login: admin password: 1234 (5.7)
+echo Testing login: Admin password: 1234 (5.7)
 echo Excepted: Password incorrect
 echo Actual:
-java -jar loginpass.jar -login admin -password 1234
+java -jar loginpass.jar -login Admin -password 1234
 echo.
 
 pause

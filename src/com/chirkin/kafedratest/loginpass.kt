@@ -1,21 +1,29 @@
 package com.chirkin.kafedratest
 
+import kotlin.system.exitProcess
+
 val userList = listOf(
-        User("admin", "admin"),
-        User("user1", "user")
+        User("Admin", "admin"),
+        User("User1", "user")
 )
 
-fun main(args: Array<String>) {
+//val args1 = arrayOf("-h")
 
-    //var args1 = arrayOf("-login", "admin", "-password", "admin")
+fun main(args: Array<String>) {
 
     val validateService = ValidateService()
     val params = Params(args)
 
-    if (params.list.isNotEmpty() && !params.isHelp) {
-        validateService.validate(params.login, params.password)
+    if (!params.isHelp) {
+        /*val ep = */validateService.validate(params.login, params.password)
+        //exitProcess(ep)
+
+    } else {
+        printReference()
+        exitProcess(1)
     }
+
 }
 
-fun printReference() = println("1 - For authorization you need to print next parameters: -login <your login>, -password <your password>")
+fun printReference() = println("For authorization you need to print next parameters: -login <your login>, -password <your password>")
 

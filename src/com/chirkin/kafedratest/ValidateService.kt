@@ -1,22 +1,20 @@
 package com.chirkin.kafedratest
 
-
-
 class ValidateService {
     fun validate(login: String, password: String): Int {
         if (isLoginCorrect(login)) {
             val user = findUser(login)
-            if (user != null) {
+            return if (user != null) {
                 if (isPassCorrect(user, password)) {
                     println("0 - Login successful")
-                    return 0
+                    0
                 } else {
                     println("4 - Password incorrect")
-                    return 4
+                    4
                 }
             } else {
                 println("3 - User not found")
-                return 3
+                3
             }
         } else {
             println("2 - login format incorrect")
@@ -25,16 +23,8 @@ class ValidateService {
     }
 
     private fun isLoginCorrect(login: String): Boolean {
-        val invalidChars = listOf("$", "@", "!", "#", "%", "^", "&", "*")
-        var i = 0
-        var count = 0
-        while (i < login.length) {
-            if (login.contains(invalidChars[i])) {
-                count++
-                i++
-            } else i++
-        }
-        return count == 0
+        val regex = Regex("[A-Za-z0-9]+")
+        return regex.matches(login)
     }
 
     private fun findUser(login: String): User? {
