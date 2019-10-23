@@ -2,23 +2,19 @@ package com.chirkin.kafedratest
 
 class ValidateService {
     fun validate(login: String, password: String): Int {
-        if (isLoginCorrect(login)) {
+        return if (isLoginCorrect(login)) {
             val user = findUser(login)
-            return if (user != null) {
+            if (user != null) {
                 if (isPassCorrect(user, password)) {
-                    println("0 - Login successful")
                     0
                 } else {
-                    println("4 - Password incorrect")
                     4
                 }
             } else {
-                println("3 - User not found")
                 3
             }
         } else {
-            println("2 - login format incorrect")
-            return 2
+            2
         }
     }
 
