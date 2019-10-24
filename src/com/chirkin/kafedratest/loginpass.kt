@@ -1,13 +1,12 @@
 package com.chirkin.kafedratest
-
 import kotlin.system.exitProcess
 
-val userList = listOf(
+private val userList = listOf(
         User("Admin", "admin"),
         User("User1", "user")
 )
 
-val validateService = ValidateService()
+val validateService = ValidateService(userList)
 
 fun main(args: Array<String>) {
 
@@ -16,12 +15,10 @@ fun main(args: Array<String>) {
     val params = Params(args1)
     val exitCode: Int
 
-
     if (!params.isHelp) {
         exitCode = validate(params.login, params.password)
         println("Exit code $exitCode")
         exitProcess(exitCode)
-
     } else {
         printReference()
         println("Exit code 1")
@@ -32,18 +29,33 @@ fun main(args: Array<String>) {
 fun printReference() = println("For authorization you need to print next parameters: -login <your login>, -password <your password>")
 
 fun validate(login: String, password: String): Int {
-    return if (validateService.isLoginCorrect(login)) {
+
+    return when (validateService.isLoginCorrect(login)) {
+        true -> {
+            val user = validateService.findUser(login)
+            when {
+                user != null -> when {
+                    validateService.isPassCorrect(user, password) -> 0
+                    else -> 4
+                }
+                else -> 3
+            }
+        }
+        else -> 2
+    }
+
+    /*if (validateService.isLoginCorrect(login)) {
         val user = validateService.findUser(login)
         if (user != null) {
             if (validateService.isPassCorrect(user, password)) {
-                0
+                return 0
             } else {
-                4
+                return 4
             }
         } else {
-            3
+            return 3
         }
     } else {
-        2
-    }
+        return 2
+    }*/
 }

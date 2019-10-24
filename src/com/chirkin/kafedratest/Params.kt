@@ -10,8 +10,7 @@ class Params(args: Array<String>) {
             isHelp = true
             login = ""
             password = ""
-        } else {
-            if (args.first() == "-login") {
+        } else if (args.first() == "-login") {
                 login = args[1]
                 password = args[3]
                 isHelp = false
@@ -20,6 +19,5 @@ class Params(args: Array<String>) {
                 password = args[1]
                 isHelp = false
             }
-        }
     }
 }
