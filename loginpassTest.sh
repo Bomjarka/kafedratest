@@ -64,4 +64,17 @@ echo "Actual:"
 java -jar loginpass.jar -login Admin -password 1234
 echo -e
 
+
+echo "Testing login: Admin"
+echo "Excepted: Exit code 1"
+echo "Actual:"
+java -jar loginpass.jar -login Admin
+echo -e
+
+echo "Testing blablablha"
+echo "Excepted: Exit code 1"
+echo "Actual:"
+java -jar loginpass.jar -login Admin
+echo -e
+
 read

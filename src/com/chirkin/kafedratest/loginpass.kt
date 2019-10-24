@@ -1,4 +1,5 @@
 package com.chirkin.kafedratest
+
 import kotlin.system.exitProcess
 
 private val userList = listOf(
@@ -10,9 +11,9 @@ val validateService = ValidateService(userList)
 
 fun main(args: Array<String>) {
 
-    val args1 = arrayOf("-login", "Admin", "-password", "admin") //строка для проверки
+    val args1 = arrayOf("-login", "Admin") //строка для проверки
 
-    val params = Params(args1)
+    val params = Params(args)
     val exitCode: Int
 
     if (!params.isHelp) {
