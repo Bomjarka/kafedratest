@@ -7,12 +7,10 @@ private val userList = listOf(
         User("User1", "user")
 )
 
-val validateService = ValidateService(userList)
 
 fun main(args: Array<String>) {
 
-    val args1 = arrayOf("-login", "Admin") //строка для проверки
-
+    //val args1 = arrayOf("-login", "Admin") //строка для проверки
     val params = Params(args)
     val exitCode: Int
 
@@ -22,8 +20,9 @@ fun main(args: Array<String>) {
         exitProcess(exitCode)
     } else {
         printReference()
-        println("Exit code 1")
-        exitProcess(1)
+        exitCode = 1
+        println("Exit code $exitCode")
+        exitProcess(exitCode)
     }
 }
 
@@ -31,6 +30,7 @@ fun printReference() = println("For authorization you need to print next paramet
 
 fun validate(login: String, password: String): Int {
 
+    val validateService = ValidateService(userList)
     return when (validateService.isLoginCorrect(login)) {
         true -> {
             val user = validateService.findUser(login)
