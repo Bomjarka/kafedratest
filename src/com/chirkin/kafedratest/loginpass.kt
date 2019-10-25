@@ -31,32 +31,11 @@ fun printReference() = println("For authorization you need to print next paramet
 fun validate(login: String, password: String): Int {
 
     val validateService = ValidateService(userList)
-    return when (validateService.isLoginCorrect(login)) {
-        true -> {
-            val user = validateService.findUser(login)
-            when {
-                user != null -> when {
-                    validateService.isPassCorrect(user, password) -> 0
-                    else -> 4
-                }
-                else -> 3
-            }
-        }
-        else -> 2
-    }
 
-    /*if (validateService.isLoginCorrect(login)) {
-        val user = validateService.findUser(login)
-        if (user != null) {
-            if (validateService.isPassCorrect(user, password)) {
-                return 0
-            } else {
-                return 4
-            }
-        } else {
-            return 3
-        }
-    } else {
-        return 2
-    }*/
+    return when {
+        !validateService.isLoginCorrect(login) -> 2
+        validateService.findUser(login) == null -> 3
+        validateService.isPassCorrect(validateService.findUser(login), password) -> 0
+        else -> 4
+    }
 }
