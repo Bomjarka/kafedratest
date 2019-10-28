@@ -1,5 +1,7 @@
 package com.chirkin.kafedratest
 
+import java.security.MessageDigest
+
 class ValidateService(private val userList: List<User>) {
 
     fun isLoginCorrect(login: String): Boolean {
@@ -12,6 +14,15 @@ class ValidateService(private val userList: List<User>) {
     }
 
     fun isPassCorrect(user: User?, password: String): Boolean {
-        return user != null && password == user.password
+        return user != null && toHash(toHash(password) + (user.salt)) == user.hash
+    }
+
+    companion object Hash {
+        fun toHash(input: String): String {
+            val bytes = input.toByteArray()
+            val md = MessageDigest.getInstance("SHA-256")
+            val digest = md.digest(bytes)
+            return digest.fold("", { str, it -> str + "%02x".format(it) })
+        }
     }
 }

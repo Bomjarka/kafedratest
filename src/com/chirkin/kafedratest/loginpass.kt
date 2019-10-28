@@ -10,19 +10,17 @@ private val userList = listOf(
 
 fun main(args: Array<String>) {
 
-    //val args1 = arrayOf("-login", "Admin") //строка для проверки
+    //val args1 = arrayOf("-login", "Admin", "-password", "admin") //строка для проверки
     val params = Params(args)
-    val exitCode: Int
 
     if (!params.isHelp) {
-        exitCode = validate(params.login, params.password)
+        val exitCode = validate(params.login, params.password)
         println("Exit code $exitCode")
         exitProcess(exitCode)
     } else {
         printReference()
-        exitCode = 1
-        println("Exit code $exitCode")
-        exitProcess(exitCode)
+        println("Exit code 1")
+        exitProcess(1)
     }
 }
 
