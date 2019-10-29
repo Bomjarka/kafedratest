@@ -29,6 +29,7 @@
   7.3.	–role execute –res CD.E.B – login Admin – код 0
   7.4.	–login User1 – res A – role delete – код 5
   7.5.	–login Admin –res B.C – role write – код 6 (у пользователя Admin нет доступа к B.C в поле resource класса User.kt хардкод)
+  
 
 
 
