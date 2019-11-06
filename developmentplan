@@ -14,23 +14,15 @@
     3.1. Добавить библиотеку kotlin.cli 
     3.2. Изменить класс params и хранить в нём параметры при помощи библиотеки 
     3.3. Метод isHelp так же будет возвращать true/false в loginpass.kt
-4. Ресурсы
-    4.1. Все ресурсы будет считать существующими
-    4.2. Любой набор символов после –res является существующим путём
-    4.3. Исходя из предыдущих пунктов, нам не нужно создавать и хранить список всех существующих ресурсов
-    4.4. Доступ к определённому ресурсу даёт доступ к его потомкам
-5. Параметры полей
-    5.1. –res “String”
-    5.2. –role “String”
-6. Коды возврата
-    6.1. В классе CheckUserRole.kt  добавим метод findRole, который будет проверять существует ли указанная роль и возвращать true/false, если false, то в loginpass передадим в exitCode 5 – неизвестная роль
-    6.2. Метод isRole из класса CheckUserRole будет проверять соответствие введённой роли и возвращать true/false, если false, то в loginpass передадим в exitCode 6 – нет доступа
-7. Тестовые строки (правильность логина и пароля не проверяем)
-    7.1. –login Admin –res A.B.CD – role write – код 0
-    7.2. –res A.BC – login User1 – role read – код 0
-    7.3. –role execute –res CD.E.B – login Admin – код 0
-    7.4. –login User1 – res A – role delete – код 5
-    7.5. –login Admin –res B.C – role write – код 6 (у пользователя Admin нет доступа к B.C в поле resource класса User.kt хардкод)
+4. Коды возврата
+    4.1. В классе CheckUserRole.kt  добавим метод findRole, который будет проверять существует ли указанная роль и возвращать true/false, если false, то в loginpass передадим в exitCode 5 – неизвестная роль
+    4.2. Метод isRole из класса CheckUserRole будет проверять соответствие введённой роли и возвращать true/false, если false, то в loginpass передадим в exitCode 6 – нет доступа
+5. Тестовые строки (правильность логина и пароля не проверяем)
+    5.1. –login Admin –res A.B.CD – role write – код 0
+    5.2. –res A.BC – login User1 – role read – код 0
+    5.3. –role execute –res CD.E.B – login Admin – код 0
+    5.4. –login User1 – res A – role delete – код 5
+    5.5. –login Admin –res B.C – role write – код 6 (у пользователя Admin нет доступа к B.C в поле resource класса User.kt хардкод)
   
 
 
