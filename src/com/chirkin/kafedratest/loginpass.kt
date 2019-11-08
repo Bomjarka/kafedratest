@@ -1,6 +1,7 @@
 package com.chirkin.kafedratest
-
 import kotlin.system.exitProcess
+
+import kotlinx.cli.*
 
 private val userList = listOf(
         User("Admin", "admin"),
@@ -16,11 +17,15 @@ private val userRole = listOf(
 
 fun main(args: Array<String>) {
 
-    val args1 = arrayOf("-login", "Admin", "-password", "admin") //строка для проверки
+//  Попытки поработать с парсером, не понял как возвращать результат
+    val parser = ArgParser("Input string")
+    val login by parser.option(ArgType.String, fullName = "login", shortName = "l", description = "User login").required()
+    val password by parser.option(ArgType.String, fullName = "password", shortName = "p", description = "user password").required()
+
+    val args1 = arrayOf("--login", "Admin", "--password", "admin") //строка для проверки
+    parser.parse(args1)
+
     val params = Params(args1)
-
-
-
 
     if (!params.isHelp) {
         val exitCode = validate(params.login, params.password)

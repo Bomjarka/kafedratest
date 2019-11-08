@@ -1,4 +1,6 @@
 package com.chirkin.kafedratest
+import kotlinx.cli.*
+
 
 class Params(args: Array<String>) {
     val login: String
@@ -19,5 +21,6 @@ class Params(args: Array<String>) {
             password = args[1]
             isHelp = false
         }
+
     }
 }
