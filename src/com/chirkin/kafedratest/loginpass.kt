@@ -8,8 +8,9 @@ private val userList = listOf(
 )
 
 private val userRole = listOf(
-        UserRole(userList.first(),"A.BC",Role.execute),
-        UserRole(userList.last(),"A.BC.D.E",Role.read)
+        UserRole(userList.first(),"A.BC",Role.Execute),
+        UserRole(userList.first(),"A.BC",Role.Write),
+        UserRole(userList.last(),"A.BC.D.E",Role.Read)
 )
 
 
@@ -18,7 +19,8 @@ fun main(args: Array<String>) {
     val args1 = arrayOf("-login", "Admin", "-password", "admin") //строка для проверки
     val params = Params(args1)
 
-    println(userRole.first().user.login)
+
+
 
     if (!params.isHelp) {
         val exitCode = validate(params.login, params.password)
