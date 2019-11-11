@@ -1,6 +1,6 @@
 package com.chirkin.kafedratest
 
-class CheckUserRole(private val userList: List<User>, private val userRole: List<UserRole>) {
+class CheckUserRole(private val userRole: List<UserRole>) {
 
     fun isRole(role: String): Boolean {
         val roles = listOf(Role.Execute.role, Role.Read.role, Role.Write.role)
