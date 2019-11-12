@@ -28,7 +28,7 @@ class Params(args: Array<String>) {
             password = ""
             role = ""
             resource = ""
-        } else if (args.size == 4) {
+        } else if (args.size == 4 && uLogin != null && uPassword != null) {
             isHelp = false
             isAuth = false
             login = uLogin!!

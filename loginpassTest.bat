@@ -105,6 +105,10 @@ echo Actual:
 java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role Execute --resource A.BC.EF
 echo.
 
-
+echo Testing role: Execute resource: A.BC.EF (5.10)
+echo Excepted: Exit code 1 (print Reference)
+echo Actual:
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --role Execute --resource A.BC.EF
+echo.
 
 pause
