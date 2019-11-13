@@ -8,14 +8,14 @@ private val userList = listOf(
 )
 
 private val userRole = listOf(
-        UserRole(userList.first(), "A.BC", Role.Execute),
-        UserRole(userList.first(), "A.BC", Role.Write),
-        UserRole(userList.last(), "A.BC.D.E", Role.Read)
+        UserRole(userList.first(), "A.BC", Role.EXECUTE),
+        UserRole(userList.first(), "A.BC", Role.WRITE),
+        UserRole(userList.last(), "A.BC.D.E", Role.READ)
 )
 
 fun main(args: Array<String>) {
 
-//    val args1 = arrayOf("--login", "User1", "--password", "user","--role", "Read", "--resource", "A.BC.D.E") //строка для проверки
+//    val args1 = arrayOf("--login", "User1", "--password", "user","--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
     val params = Params(args)
 
     when {
@@ -43,7 +43,7 @@ fun validate(login: String, password: String, role: String, resource: String): I
         !ValidateService(userList).isLoginCorrect(login) -> 2
         ValidateService(userList).findUser(login) == null -> 3
         !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login), password) -> 4
-        !CheckUserRole(userRole).isRole(role) -> 5
+        !Role.isRole(role) -> 5
         !CheckUserRole(userRole).isUserRole(login, role, resource) -> 6
         else -> 0
     }

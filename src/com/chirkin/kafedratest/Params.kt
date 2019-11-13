@@ -21,7 +21,7 @@ class Params(args: Array<String>) {
 
     init {
         parser.parse(args)
-        if (args.isEmpty() || ("-h" in args)){
+        if (args.isEmpty() || ("-h" in args)) {
             isHelp = true
             isAuth = false
             login = ""
@@ -42,8 +42,7 @@ class Params(args: Array<String>) {
             resource = uResource!!
             isHelp = false
             isAuth = true
-        }
-        else  {
+        } else {
             isHelp = true
             isAuth = false
             login = ""
@@ -51,26 +50,5 @@ class Params(args: Array<String>) {
             role = ""
             resource = ""
         }
-
-
-      /*  if ((args.isEmpty()) || ("-h" in args) || (args.size < 6)) {
-            isHelp = true
-            login = ""
-            password = ""
-            role = ""
-            resource = ""
-        } else if (uLogin != "" && uPassword != "" && uRole != "" && uResource != "") {
-            login = uLogin.toString()
-            password = uPassword.toString()
-            role = uRole.toString()
-            resource = uResource.toString()
-            isHelp = false
-        } else {
-            isHelp = false
-            login = ""
-            password = ""
-            role = ""
-            resource = ""
-        }*/
     }
 }

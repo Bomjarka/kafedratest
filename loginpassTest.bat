@@ -75,40 +75,40 @@ echo Actual:
 java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin
 echo.
 
-echo Testing login: Admin password: admin role: Execute resource: A.BC (5.8)
+echo Testing login: Admin password: admin role: EXECUTE resource: A.BC (5.8)
 echo Excepted: Exit code 0 (Login successful)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role Execute --resource A.BC
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role EXECUTE --resource A.BC
 echo.
 
-echo Testing login: User1 password: user role: Read resource: A.BC.D.E (5.8)
+echo Testing login: User1 password: user role: READ resource: A.BC.D.E (5.8)
 echo Excepted: Exit code 0 (Login successful)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login User1 --password user --role Read --resource A.BC.D.E
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login User1 --password user --role READ --resource A.BC.D.E
 echo.
 
-echo Testing  password: admin role: Execute login: Admin resource: A.BC (5.9)
+echo Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9)
 echo Excepted: Exit code 0 (Login successful)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --password admin --role Execute --login Admin  --resource A.BC
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC
 echo.
 
-echo Testing login: Admin password: admin role: Delete resource: A.BC (5.10)
+echo Testing login: Admin password: admin role: DELETE resource: A.BC (5.10)
 echo Excepted: Exit code 5 (Role unknown)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role Delete --resource A.BC
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role DELETE --resource A.BC
 echo.
 
-echo Testing login: Admin password: admin role: Delete resource: A.BC.EF (5.10)
+echo Testing login: Admin password: admin role: EXECUTE resource: A.BC.EF (5.10)
 echo Excepted: Exit code 6 (Success do this resource is denied)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role Execute --resource A.BC.EF
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --login Admin --password admin --role EXECUTE --resource A.BC.EF
 echo.
 
-echo Testing role: Execute resource: A.BC.EF (5.10)
+echo Testing role: EXECUTE resource: A.BC.EF (5.10)
 echo Excepted: Exit code 1 (print Reference)
 echo Actual:
-java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --role Execute --resource A.BC.EF
+java -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar" com.chirkin.kafedratest.LoginpassKt --role EXECUTE --resource A.BC.EF
 echo.
 
 pause
