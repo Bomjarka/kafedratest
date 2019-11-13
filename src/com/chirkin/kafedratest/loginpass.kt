@@ -15,7 +15,7 @@ private val userRole = listOf(
 
 fun main(args: Array<String>) {
 
-//    val args1 = arrayOf("--login", "User1", "--password", "user","--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
+//    val args1 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
     val params = Params(args)
 
     when {
