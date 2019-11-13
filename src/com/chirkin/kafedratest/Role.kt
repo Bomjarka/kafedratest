@@ -4,13 +4,7 @@ enum class Role {
     READ, WRITE, EXECUTE;
 
     companion object {
-        fun isRole(role: String): Boolean {
-            var isR = false
-            values().forEach {
-                isR = it.name == role
-            }
-            return isR
-        }
+        fun isRole(role: String) = values().any { it.name == role }
     }
 
 }
