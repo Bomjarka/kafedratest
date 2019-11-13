@@ -1,4 +1,5 @@
 package com.chirkin.kafedratest
+
 import kotlin.system.exitProcess
 
 private val userList = listOf(
@@ -7,9 +8,9 @@ private val userList = listOf(
 )
 
 private val userRole = listOf(
-        UserRole(userList.first(),"A.BC",Role.Execute),
-        UserRole(userList.first(),"A.BC",Role.Write),
-        UserRole(userList.last(),"A.BC.D.E",Role.Read)
+        UserRole(userList.first(), "A.BC", Role.Execute),
+        UserRole(userList.first(), "A.BC", Role.Write),
+        UserRole(userList.last(), "A.BC.D.E", Role.Read)
 )
 
 fun main(args: Array<String>) {
@@ -17,21 +18,20 @@ fun main(args: Array<String>) {
 //    val args1 = arrayOf("--login", "User1", "--password", "user","--role", "Read", "--resource", "A.BC.D.E") //строка для проверки
     val params = Params(args)
 
-    if (!params.isHelp) {
-        if (params.isAuth) {
-            val exitCode = validate(params.login, params.password,params.role,params.resource)
-            println("Exit code $exitCode")
-            exitProcess(exitCode)
+    when {
+        params.isHelp -> {
+            printReference()
+            println("Exit code 1")
+            exitProcess(1)
         }
-        else {
-            val exitCode = validate(params.login, params.password)
-            println("Exit code $exitCode")
-            exitProcess(exitCode)
+        !params.isAuth -> {
+            println("Exit code ${validate(params.login, params.password)}")
+            exitProcess(validate(params.login, params.password))
         }
-    } else {
-        printReference()
-        println("Exit code 1")
-        exitProcess(1)
+        else -> {
+            println("Exit code ${validate(params.login, params.password, params.role, params.resource)}")
+            exitProcess(validate(params.login, params.password, params.role, params.resource))
+        }
     }
 }
 
@@ -42,9 +42,9 @@ fun validate(login: String, password: String, role: String, resource: String): I
     return when {
         !ValidateService(userList).isLoginCorrect(login) -> 2
         ValidateService(userList).findUser(login) == null -> 3
-        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login),password) -> 4
+        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login), password) -> 4
         !CheckUserRole(userRole).isRole(role) -> 5
-        !CheckUserRole(userRole).isUserRole(login,role,resource) -> 6
+        !CheckUserRole(userRole).isUserRole(login, role, resource) -> 6
         else -> 0
     }
 }
@@ -54,7 +54,7 @@ fun validate(login: String, password: String): Int {
     return when {
         !ValidateService(userList).isLoginCorrect(login) -> 2
         ValidateService(userList).findUser(login) == null -> 3
-        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login),password) -> 4
+        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login), password) -> 4
         else -> 0
     }
 }
