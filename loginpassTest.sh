@@ -1,7 +1,9 @@
 #!/bin/bash
 
+echo -e "Starting compilation"
 kotlinc -cp lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar src/com/chirkin/kafedratest  -include-runtime -d loginpass.jar
 echo -e
+echo -e "Starting tests"
 
 echo "Testing no parameters (5.1)"
 echo "Excepted: Exit code 1 (print Reference)"
