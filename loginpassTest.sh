@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "Starting compilation"
-kotlinc -cp "lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:src/com/chirkin/kafedratest"  -include-runtime -d loginpass.jar
+kotlinc -cp lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:src/com/chirkin/kafedratest  -include-runtime -d loginpass.jar
 echo -e
 echo -e "Starting tests"
 
