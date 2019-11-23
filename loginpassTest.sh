@@ -177,5 +177,3 @@ checkExitCode $actual $expected
 echo -e
 
 printResult
-
-read
