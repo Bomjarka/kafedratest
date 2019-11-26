@@ -11,7 +11,8 @@ class Params(args: Array<String>) {
     val role: String
     val resource: String
     val isHelp: Boolean
-    val isAuth: Boolean
+    val isAuthen: Boolean
+    val isAcc: Boolean
     val dateStart: String
     val dateEnd: String
     val volume: String
@@ -29,7 +30,8 @@ class Params(args: Array<String>) {
         parser.parse(args)
         if (args.isEmpty() || ("-h" in args)) {
             isHelp = true
-            isAuth = false
+            isAuthen = false
+            isAcc = false
             login = ""
             password = ""
             role = ""
@@ -39,7 +41,8 @@ class Params(args: Array<String>) {
             volume = ""
         } else if (args.size == 4 && uLogin != null && uPassword != null) {
             isHelp = false
-            isAuth = false
+            isAuthen = false
+            isAcc = false
             login = uLogin!!
             password = uPassword!!
             role = ""
@@ -53,7 +56,8 @@ class Params(args: Array<String>) {
             role = uRole!!
             resource = uResource!!
             isHelp = false
-            isAuth = true
+            isAuthen = true
+            isAcc = false
             dateStart = ""
             dateEnd = ""
             volume = ""
@@ -63,13 +67,15 @@ class Params(args: Array<String>) {
             role = uRole!!
             resource = uResource!!
             isHelp = false
-            isAuth = true
+            isAuthen = false
+            isAcc = true
             dateStart = udateStart!!
             dateEnd = udateEnd!!
             volume = uvolume!!
         } else {
             isHelp = true
-            isAuth = false
+            isAuthen = false
+            isAcc = false
             login = ""
             password = ""
             role = ""

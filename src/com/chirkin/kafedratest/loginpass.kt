@@ -18,7 +18,6 @@ fun main(args: Array<String>) {
     val args1 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
     val args3 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E",
             "-ds", "2019-11-27", "-de", "2019-11-30", "-vol", "25") //строка для проверки
-    val accs = AccountingService()
     val params = Params(args3)
 
     when {
@@ -27,13 +26,17 @@ fun main(args: Array<String>) {
             println("Exit code 1")
             exitProcess(1)
         }
-        !params.isAuth -> {
-            println("Exit code ${validate(params.login, params.password)}")
-            exitProcess(validate(params.login, params.password))
-        }
-        else -> {
+        params.isAuthen -> {
             println("Exit code ${validate(params.login, params.password, params.role, params.resource)}")
             exitProcess(validate(params.login, params.password, params.role, params.resource))
+        }
+        params.isAcc -> {
+            println("Exit code ${validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume)}")
+            exitProcess(validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume))
+        }
+        else -> {
+            println("Exit code ${validate(params.login, params.password)}")
+            exitProcess(validate(params.login, params.password))
         }
     }
 }
@@ -48,6 +51,7 @@ fun validate(login: String, password: String, role: String, resource: String, ds
         !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
         !Role.isRole(role) -> 5
         !AuthorizationSerivce(userRole).isUserRole(login, role, resource) -> 6
+        !AccountingService.isDate(ds, de) || !AccountingService.isVol(vol) -> 7
         else -> 0
     }
 }
