@@ -15,8 +15,11 @@ private val userRole = listOf(
 
 fun main(args: Array<String>) {
 
-//    val args1 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
-    val params = Params(args)
+    val args1 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
+    val args3 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E",
+            "-ds", "2019-11-27", "-de", "2019-11-30", "-vol", "25") //строка для проверки
+    val accs = AccountingService()
+    val params = Params(args3)
 
     when {
         params.isHelp -> {
@@ -37,14 +40,26 @@ fun main(args: Array<String>) {
 
 fun printReference() = println("For authorization you need to print next parameters: -login <your login>, -password <your password>")
 
+fun validate(login: String, password: String, role: String, resource: String, ds: String, de: String, vol: String): Int {
+
+    return when {
+        !AuthenticationService(userList).isLoginCorrect(login) -> 2
+        AuthenticationService(userList).findUser(login) == null -> 3
+        !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
+        !Role.isRole(role) -> 5
+        !AuthorizationSerivce(userRole).isUserRole(login, role, resource) -> 6
+        else -> 0
+    }
+}
+
 fun validate(login: String, password: String, role: String, resource: String): Int {
 
     return when {
-        !ValidateService(userList).isLoginCorrect(login) -> 2
-        ValidateService(userList).findUser(login) == null -> 3
-        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login), password) -> 4
+        !AuthenticationService(userList).isLoginCorrect(login) -> 2
+        AuthenticationService(userList).findUser(login) == null -> 3
+        !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
         !Role.isRole(role) -> 5
-        !CheckUserRole(userRole).isUserRole(login, role, resource) -> 6
+        !AuthorizationSerivce(userRole).isUserRole(login, role, resource) -> 6
         else -> 0
     }
 }
@@ -52,9 +67,9 @@ fun validate(login: String, password: String, role: String, resource: String): I
 fun validate(login: String, password: String): Int {
 
     return when {
-        !ValidateService(userList).isLoginCorrect(login) -> 2
-        ValidateService(userList).findUser(login) == null -> 3
-        !ValidateService(userList).isPassCorrect(ValidateService(userList).findUser(login), password) -> 4
+        !AuthenticationService(userList).isLoginCorrect(login) -> 2
+        AuthenticationService(userList).findUser(login) == null -> 3
+        !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
         else -> 0
     }
 }

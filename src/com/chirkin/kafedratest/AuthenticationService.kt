@@ -2,7 +2,7 @@ package com.chirkin.kafedratest
 
 import java.security.MessageDigest
 
-class ValidateService(private val userList: List<User>) {
+class AuthenticationService(private val userList: List<User>) {
 
     fun isLoginCorrect(login: String): Boolean {
         val regex = Regex("[A-Za-z0-9]+")

@@ -14,7 +14,7 @@ class Params(args: Array<String>) {
     val isAuth: Boolean
     val dateStart: String
     val dateEnd: String
-    val volume: Int
+    val volume: String
 
     private val parser = ArgParser("Input string")
     private val uLogin by parser.option(ArgType.String, fullName = "login", shortName = "log", description = "User login")
@@ -23,7 +23,7 @@ class Params(args: Array<String>) {
     private val uResource by parser.option(ArgType.String, fullName = "resource", shortName = "rs", description = "Resource")
     private val udateStart by parser.option(ArgType.String, fullName = "dateStart", shortName = "ds", description = "Date start")
     private val udateEnd by parser.option(ArgType.String, fullName = "dateEnd", shortName = "de", description = "Date end")
-    private val uvolume by parser.option(ArgType.String, fullName = "volume", shortName = "vol", description = "Volume")
+    private val uvolume by parser.option(ArgType.String, fullName = "vol", shortName = "vol", description = "Volume")
 
     init {
         parser.parse(args)
@@ -36,7 +36,7 @@ class Params(args: Array<String>) {
             resource = ""
             dateStart = ""
             dateEnd = ""
-            volume = 0
+            volume = ""
         } else if (args.size == 4 && uLogin != null && uPassword != null) {
             isHelp = false
             isAuth = false
@@ -46,17 +46,27 @@ class Params(args: Array<String>) {
             resource = ""
             dateStart = ""
             dateEnd = ""
-            volume = 0
-        } else if (args.size == 8) {
+            volume = ""
+        } else if (args.size == 8 && uLogin != null && uPassword != null) {
             login = uLogin!!
             password = uPassword!!
             role = uRole!!
             resource = uResource!!
-            dateStart = udateStart!!
-            dateEnd = udateEnd!!
-            volume = 0
             isHelp = false
             isAuth = true
+            dateStart = ""
+            dateEnd = ""
+            volume = ""
+        } else if (args.size == 14 && uLogin != null && uPassword != null) {
+            login = uLogin!!
+            password = uPassword!!
+            role = uRole!!
+            resource = uResource!!
+            isHelp = false
+            isAuth = true
+            dateStart = udateStart!!
+            dateEnd = udateEnd!!
+            volume = uvolume!!
         } else {
             isHelp = true
             isAuth = false
@@ -66,7 +76,7 @@ class Params(args: Array<String>) {
             resource = ""
             dateStart = ""
             dateEnd = ""
-            volume = 0
+            volume = ""
         }
     }
 }

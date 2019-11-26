@@ -5,7 +5,7 @@ import java.util.*
 data class User(val login: String, private val password: String) {
 
     val salt = toRandomString()
-    private val vs = ValidateService
+    private val vs = AuthenticationService
     val hash = vs.toHash(vs.toHash(password) + salt)
 
     private fun toRandomString(): String {
