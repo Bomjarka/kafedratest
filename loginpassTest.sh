@@ -4,16 +4,16 @@ checkExitCode(){
   let fails=fails+1
 fi
 }
+
 printResult(){
   if [ "$fails" -ne "$success" ]; then
-    echo "kek"
+    echo "Some tests have been failed"
   else
     echo "All test have been passed successful"
 fi
 }
 
-
-classpath="lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:loginpass.jar"
+classpath="lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar"
 fails=0
 success=0
 
@@ -176,4 +176,50 @@ expected=6
 checkExitCode $actual $expected
 echo -e
 
+echo "Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9) -ds 2019-11-26, -de 2019-11-27, -vol 25"
+echo "Excepted: Exit code 0 (Login successful)"
+echo "Actual":
+java -cp $classpath com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC -ds 2019-11-26 -de 2019-11-27 -vol 25
+actual=$?
+expected=0
+checkExitCode $actual $expected
+echo -e
+
+echo "Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9) -ds 2019-11-261, -de 2019-11-27, -vol 25"
+echo "Excepted: Exit code 7 (Invalid Date or Volume)"
+echo "Actual":
+java -cp $classpath com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC -ds 2019-11-261 -de 2019-11-27 -vol 25
+actual=$?
+expected=7
+checkExitCode $actual $expected
+echo -e
+
+echo "Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9) -ds 2019-11-26, -de 2019-11-57, -vol 25"
+echo "Excepted: Exit code 7 (Invalid Date or Volume)"
+echo "Actual":
+java -cp $classpath com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC -ds 2019-11-26 -de 2019-11-57 -vol 25
+actual=$?
+expected=7
+checkExitCode $actual $expected
+echo -e
+
+echo "Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9) -ds 2019-11-26, -de 2019-11-27, -vol ten"
+echo "Excepted: Exit code 7 (Invalid Date or Volume)"
+echo "Actual":
+java -cp $classpath com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC -ds 2019-11-26 -de 2019-11-27 -vol ten
+actual=$?
+expected=7
+checkExitCode $actual $expected
+echo -e
+
+echo "Testing  password: admin role: EXECUTE login: Admin resource: A.BC (5.9) -ds 2019-11-26,  -vol 25, -de 2019-11-27"
+echo "Excepted: Exit code 0 (Login successful)"
+echo "Actual":
+java -cp $classpath com.chirkin.kafedratest.LoginpassKt --password admin --role EXECUTE --login Admin  --resource A.BC -ds 2019-11-26 -vol 25 -de 2019-11-27
+actual=$?
+expected=0
+checkExitCode $actual $expected
+echo -e
+
 printResult
+

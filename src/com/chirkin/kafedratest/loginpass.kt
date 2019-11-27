@@ -17,7 +17,6 @@ private val logsList: MutableList<String> = arrayListOf()
 
 
 fun main(args: Array<String>) {
-
     val params = Params(args)
     val ls = LoggingService(logsList)
 
