@@ -5,8 +5,8 @@ import java.util.*
 data class User(val login: String, private val password: String) {
 
     val salt = toRandomString()
-    private val vs = AuthenticationService
-    val hash = vs.toHash(vs.toHash(password) + salt)
+    private val authsv = AuthenticationService
+    val hash = authsv.toHash(authsv.toHash(password) + salt)
 
     private fun toRandomString(): String {
         val leftLimit = 97 // letter 'a'

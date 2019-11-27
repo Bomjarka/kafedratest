@@ -1,6 +1,6 @@
 package com.chirkin.kafedratest
 
-class AuthorizationSerivce(private val userRole: List<UserRole>) {
+class AuthorizationService(private val userRole: List<UserRole>) {
 
     fun isUserRole(login: String, role: String, resource: String): Boolean {
         var isUR = false

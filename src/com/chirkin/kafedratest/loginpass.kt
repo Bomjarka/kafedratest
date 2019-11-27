@@ -13,12 +13,13 @@ private val userRole = listOf(
         UserRole(userList.last(), "A.BC.D.E", Role.READ)
 )
 
+private val logsList: MutableList<String> = arrayListOf()
+
+
 fun main(args: Array<String>) {
 
-    val args1 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E") //строка для проверки
-    val args3 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E",
-            "-ds", "2019-11-27", "-de", "2019-11-30", "-vol", "25") //строка для проверки
-    val params = Params(args3)
+    val params = Params(args)
+    val ls = LoggingService(logsList)
 
     when {
         params.isHelp -> {
@@ -31,6 +32,8 @@ fun main(args: Array<String>) {
             exitProcess(validate(params.login, params.password, params.role, params.resource))
         }
         params.isAcc -> {
+            ls.createLog(params.login, params.resource, params.role, params.dateStart, params.dateEnd, params.volume)
+            ls.addLog()
             println("Exit code ${validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume)}")
             exitProcess(validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume))
         }
@@ -50,7 +53,7 @@ fun validate(login: String, password: String, role: String, resource: String, ds
         AuthenticationService(userList).findUser(login) == null -> 3
         !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
         !Role.isRole(role) -> 5
-        !AuthorizationSerivce(userRole).isUserRole(login, role, resource) -> 6
+        !AuthorizationService(userRole).isUserRole(login, role, resource) -> 6
         !AccountingService.isDate(ds, de) || !AccountingService.isVol(vol) -> 7
         else -> 0
     }
@@ -63,7 +66,7 @@ fun validate(login: String, password: String, role: String, resource: String): I
         AuthenticationService(userList).findUser(login) == null -> 3
         !AuthenticationService(userList).isPassCorrect(AuthenticationService(userList).findUser(login), password) -> 4
         !Role.isRole(role) -> 5
-        !AuthorizationSerivce(userRole).isUserRole(login, role, resource) -> 6
+        !AuthorizationService(userRole).isUserRole(login, role, resource) -> 6
         else -> 0
     }
 }

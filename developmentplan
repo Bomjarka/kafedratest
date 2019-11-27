@@ -15,7 +15,7 @@
     3.2. Изменить класс params и хранить в нём параметры при помощи библиотеки 
     3.3. Метод isHelp так же будет возвращать true/false в loginpass.kt
 4. Коды возврата
-    4.1. В классе AuthorizationSerivce.kt  добавим метод findRole, который будет проверять существует ли указанная роль и возвращать true/false, если false, то в loginpass передадим в exitCode 5 – неизвестная роль
+    4.1. В классе AuthorizationService.kt  добавим метод findRole, который будет проверять существует ли указанная роль и возвращать true/false, если false, то в loginpass передадим в exitCode 5 – неизвестная роль
     4.2. Метод isRole из класса CheckUserRole будет проверять соответствие введённой роли и возвращать true/false, если false, то в loginpass передадим в exitCode 6 – нет доступа
 5. Тестовые строки (правильность логина и пароля не проверяем)
     5.1. –login Admin –res A.B.CD – role write – код 0
