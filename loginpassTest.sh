@@ -13,7 +13,7 @@ printResult(){
 fi
 }
 
-classpath="lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar"
+classpath="lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:loginpass.jar"
 fails=0
 success=0
 
