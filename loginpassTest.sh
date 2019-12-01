@@ -36,6 +36,8 @@ echo "Testing -h parameter (5.2)"
 echo "Excepted: Exit code 1 (print Reference)"
 echo "Actual: "
 java -cp $classpath com.chirkin.kafedratest.LoginpassKt -h
+actual=$?
+expected=1
 echo -e
 
 echo "Testing login: Admin password: admin (5.3)"
