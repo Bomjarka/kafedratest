@@ -26,9 +26,13 @@ Windows
 Linux 
 1. Скачать архив с проектом и запустить скрипт loginpassTest.sh
 2. Для запуска в ручном режиме необходимо в консоли прописать следующие команды
+
  2.1. Для компиляции программы kotlinc -cp lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar src -include-runtime -d loginpass.jar
+ 
  2.2. Для запуска программы java -cp $classpath com.chirkin.kafedratest.LoginpassKt, где $classpath это lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:loginpass.jar
+ 
  2.3. Для запуска программы необходимо прописать java -cp $classpath com.chirkin.kafedratest.LoginpassKt и далее указать необходимые параметры через --
+ 
  2.4. Список параметров: --login --password --role --resource -ds -de -vol
 
 [![Build Status](https://travis-ci.org/Bomjarka/kafedratest.svg?branch=master)](https://travis-ci.org/Bomjarka/kafedratest)
