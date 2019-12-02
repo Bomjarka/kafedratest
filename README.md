@@ -33,4 +33,3 @@ Linux
  
     2.4. Список параметров: --login --password --role --resource -ds -de -vol
 
-[![Build Status](https://travis-ci.org/Bomjarka/kafedratest.svg?branch=master)](https://travis-ci.org/Bomjarka/kafedratest)
