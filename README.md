@@ -1,4 +1,4 @@
-# kafedratest
+# kafedratest [![Build Status](https://travis-ci.org/Bomjarka/kafedratest.svg?branch=master)](https://travis-ci.org/Bomjarka/kafedratest)
 Приложение для работы со строками.
 Данное приложение анализирует получаемую на входе строку, подсчитывает количество каждого слова в данной строке,
 убирает дубликате и создаёт новую строку, упорядоченную в алфавитном порядке
