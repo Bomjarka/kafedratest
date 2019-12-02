@@ -20,7 +20,7 @@ Linux
 3. Если введённые даты и объём данных верны, то пользователь проходит процедуру аккаунтинга
 Приложение самостоятельно компилирует исполняемый файл и проводит серию тестов, покрывающих варианты использования
 
-Ссылка на roadmap https://github.com/Bomjarka/kafedratest/blob/master/developmentplan
+Ссылка на roadmap https://github.com/Bomjarka/kafedratest/blob/master/RoadmaptLoginPass.md
 Linux 
 1. Скачать архив с проектом и запустить скрипт loginpassTest.sh
 2. Для запуска в ручном режиме необходимо в консоли прописать следующие команды
