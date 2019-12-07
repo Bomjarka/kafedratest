@@ -15,7 +15,6 @@ private val userRole = listOf(
 
 private val logsList: MutableList<String> = arrayListOf()
 
-
 fun main(args: Array<String>) {
     val params = Params(args)
     val ls = LoggingService(logsList)
@@ -43,7 +42,10 @@ fun main(args: Array<String>) {
     }
 }
 
-fun printReference() = println("For authorization you need to print next parameters: -login <your login>, -password <your password>")
+fun printReference() = println("For authorization you need to print next parameters: --login <String> --password <String> " +
+        "--role <String> --resource <String> " +
+        "-ds <'yyyy-mm-dd'> -de <'yyyy-mm-dd'> -vol <Int>"
+)
 
 fun validate(login: String, password: String, role: String, resource: String, ds: String, de: String, vol: String): Int {
 
