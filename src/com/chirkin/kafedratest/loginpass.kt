@@ -1,5 +1,4 @@
 package com.chirkin.kafedratest
-
 import kotlin.system.exitProcess
 
 private val userList = listOf(
@@ -16,6 +15,9 @@ private val userRole = listOf(
 private val logsList: MutableList<String> = arrayListOf()
 
 fun main(args: Array<String>) {
+    val args3 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E",
+            "-ds", "2019-11-27", "-de", "2019-11-30", "-vol", "25") //строка для проверки
+
     val params = Params(args)
     val ls = LoggingService(logsList)
 

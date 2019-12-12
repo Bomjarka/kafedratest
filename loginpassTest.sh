@@ -13,12 +13,12 @@ printResult(){
 fi
 }
 
-classpath="lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar:loginpass.jar"
+classpath="lib/log4j-core-2.12.1.jar;lib/log4j-api-2.12.1.jar;lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar;loginpass.jar"
 fails=0
 success=0
 
 echo -e "Starting compilation"
-kotlinc -cp lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar src -include-runtime -d loginpass.jar
+kotlinc -cp lib/log4j-core-2.12.1.jar lib/log4j-api-2.12.1.jar lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar src -include-runtime -d loginpass.jar
 echo -e
 echo -e "Starting tests"
 
