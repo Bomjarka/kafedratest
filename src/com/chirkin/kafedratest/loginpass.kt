@@ -1,4 +1,6 @@
 package com.chirkin.kafedratest
+
+import org.apache.logging.log4j.LogManager
 import kotlin.system.exitProcess
 
 private val userList = listOf(
@@ -15,30 +17,33 @@ private val userRole = listOf(
 private val logsList: MutableList<String> = arrayListOf()
 
 fun main(args: Array<String>) {
-    val args3 = arrayOf("--login", "User1", "--password", "user", "--role", "READ", "--resource", "A.BC.D.E",
-            "-ds", "2019-11-27", "-de", "2019-11-30", "-vol", "25") //строка для проверки
 
     val params = Params(args)
-    val ls = LoggingService(logsList)
-
+    val logger = LogManager.getLogger()
     when {
         params.isHelp -> {
             printReference()
             println("Exit code 1")
+            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            logger.info(log)
             exitProcess(1)
         }
         params.isAuthen -> {
             println("Exit code ${validate(params.login, params.password, params.role, params.resource)}")
+            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            logger.info(log)
             exitProcess(validate(params.login, params.password, params.role, params.resource))
         }
         params.isAcc -> {
-            ls.createLog(params.login, params.resource, params.role, params.dateStart, params.dateEnd, params.volume)
-            ls.addLog()
             println("Exit code ${validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume)}")
+            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            logger.info(log)
             exitProcess(validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume))
         }
         else -> {
             println("Exit code ${validate(params.login, params.password)}")
+            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            logger.info(log)
             exitProcess(validate(params.login, params.password))
         }
     }

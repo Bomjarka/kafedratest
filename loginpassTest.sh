@@ -18,10 +18,10 @@ fails=0
 success=0
 
 echo -e "Starting compilation"
-kotlinc -cp lib/log4j-core-2.12.1.jar lib/log4j-api-2.12.1.jar lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar src -include-runtime -d loginpass.jar
+kotlinc -cp $classpath  src -include-runtime -d loginpass.jar
+jar -u -f loginpass.jar -C src/resource log4j2.xml
 echo -e
 echo -e "Starting tests"
-
 
 echo "Testing no parameters (5.1)"
 echo "Excepted: Exit code 1 (print Reference)"
