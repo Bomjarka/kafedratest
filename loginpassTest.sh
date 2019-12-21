@@ -13,7 +13,7 @@ printResult(){
 fi
 }
 
-classpath="lib/log4j-core-2.12.1.jar;lib/log4j-api-2.12.1.jar;lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar"
+classpath="lib/log4j-core-2.12.1.jar;lib/log4j-api-2.12.1.jar;lib/h2-1.4.200.jar;lib/kotlinx-cli-jvm-0.2.0-SNAPSHOT.jar"
 fails=0
 success=0
 

@@ -18,31 +18,32 @@ private val logsList: MutableList<String> = arrayListOf()
 
 fun main(args: Array<String>) {
 
+
     val params = Params(args)
     val logger = LogManager.getLogger()
     when {
         params.isHelp -> {
             printReference()
             println("Exit code 1")
-            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            val log = "-login ${params.login} -resource ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
             logger.info(log)
             exitProcess(1)
         }
         params.isAuthen -> {
             println("Exit code ${validate(params.login, params.password, params.role, params.resource)}")
-            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            val log = "-login ${params.login} -resource ${params.resource} -role ${params.role}"
             logger.info(log)
             exitProcess(validate(params.login, params.password, params.role, params.resource))
         }
         params.isAcc -> {
             println("Exit code ${validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume)}")
-            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            val log = "-login ${params.login} -resource ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
             logger.info(log)
             exitProcess(validate(params.login, params.password, params.role, params.resource, params.dateStart, params.dateEnd, params.volume))
         }
         else -> {
             println("Exit code ${validate(params.login, params.password)}")
-            val log = "-login ${params.login} -password ${params.resource} -role ${params.role} -ds ${params.dateStart} -de ${params.dateEnd} -vol ${params.volume}"
+            val log = "-login ${params.login}"
             logger.info(log)
             exitProcess(validate(params.login, params.password))
         }
